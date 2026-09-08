@@ -626,6 +626,10 @@
   #people .pcard img{width:100%;aspect-ratio:4/3;object-fit:cover;
     display:block;filter:grayscale(1);transition:filter .2s ease}
   #people a.pcard:hover img{filter:none}
+  /* the portraits carry their faces high (Naomi) and low (Poonam);
+     anchor each 4:3 crop where the face lives */
+  #people a[href="/creatives/naomi/"] img{object-position:50% 20%}
+  #people a[href="/creatives/poonam/"] img{object-position:50% 62%}
   #people .pmeta{display:block;padding:16px 18px 20px}
   #people .prole{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
     opacity:.8;display:block;margin-bottom:4px}
