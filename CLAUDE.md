@@ -54,14 +54,17 @@ package.json       wrangler devDependency + dev/deploy scripts
   three creatives (owner request, 25 Aug 2026) linking to their
   `/creatives/<name>/` booking pages; `/creatives/` itself forwards to
   `/#people`. Her kit faces (FreightTextCmp Pro = `qhhw`, Poppins = `thsk`,
-  Sweet Sans Pro = `tgzb`, Neue Haas = `wtqc`) are licensed to her domain:
-  the captured Typekit @font-face rules stay in the head but Adobe refuses
-  the demo deploy, so `static-canvas-css` declares same-name faces serving
-  the self-hosted Lora/Poppins as stand-ins (plus a few one-line width
-  patches in `static-canvas-js` where the stand-ins run wider than her
-  compressed originals). On transfer to her domain, remove the alias faces
-  so the real kit takes over. Inter + Pinyon Script still load remotely via
-  gstatic.
+  Sweet Sans Pro = `tgzb`, Neue Haas Grotesk Text = `wtqc`) now load for
+  real: an Adobe Fonts web project on our own account (kit `xmc1iac`,
+  licensed for this deploy's domain, vibeworthy.co and localhost) serves the
+  exact faces, and the `kit-bridge` script in `index.html` fetches the kit
+  CSS and registers each face under her Typekit family codes. Only once
+  every face has loaded does it remove `#fallback-faces` — the self-hosted
+  Lora/Poppins stand-ins that dress the page whenever Adobe is unreachable
+  (a few one-line width patches in `static-canvas-js` are sized for those
+  wider stand-ins and sit harmlessly under the narrower real faces). Her own
+  captured Typekit rules stay in the head untouched. Inter + Pinyon Script
+  still load remotely via gstatic.
 - The pitch pages (`/creatives/`, `/offer/`, 404) keep the brand-matched look
   of v1.6 (her blues and cream, Lora + Poppins standing in for her faces).
   Do not change that look without being asked. On those pages the one-line
@@ -157,3 +160,4 @@ design are their own release, requested deliberately.
 | v1.15 | The type finds its voice again | Her font service refuses to dress the demo's address, so every headline had been falling back to a plain default face. The whole page — headlines, tickers, cards and all — now wears the site's own elegant serif and clean sans, with each line held to the width it was drawn for. |
 | v1.16 | The offer speaks only of the work | The demo bar slims to two tabs — the site and the offer — now that the people live on the front page itself. And the offer page no longer quotes a price: it makes the case on the work alone, with money left for the conversation. |
 | v1.17 | Every face fits its frame | The three portraits at the foot of the front page now sit properly in their windows — each crop anchored where the face is — so nobody loses their head on a phone or a monitor. |
+| v1.18 | The real typefaces take the stage | The demo now wears her actual faces — the compressed Freight serif, Poppins, Sweet Sans and Neue Haas — served legitimately through our own Adobe Fonts licence covering this address and hers. Wherever that service can't reach, the stand-ins stay on without a seam. |

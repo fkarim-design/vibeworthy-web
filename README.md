@@ -69,12 +69,15 @@ deploy. On transfer to the client's domain, re-point those `og:image` URLs.
 
 ## External resources
 
-- **Fonts on `/`**: FreightTextCmp Pro, Poppins, Sweet Sans Pro and Neue Haas
-  Grotesk load from Adobe Fonts (use.typekit.net) via the kit URLs baked into
-  her page — licensed to her, not self-hostable. Inter and Pinyon Script load
-  from fonts.gstatic.com via the vendored `assets/rm/google-fonts.css`. With
-  those hosts unreachable the page falls back to system serif/sans and stays
-  legible.
+- **Fonts on `/`**: her real faces — FreightTextCmp Pro, Poppins, Sweet Sans
+  Pro and Neue Haas Grotesk Text — load from Adobe Fonts (use.typekit.net)
+  through our own web project, kit `xmc1iac`, licensed for this deploy's
+  domain, vibeworthy.co and localhost. A small bridge script in `index.html`
+  fetches the kit CSS and registers each face under the Typekit family codes
+  her captured styles use; until every face has loaded (or whenever Adobe is
+  unreachable) the page wears self-hosted Lora + Poppins stand-ins from
+  `/fonts/`. Inter and Pinyon Script load from fonts.gstatic.com via the
+  vendored `assets/rm/google-fonts.css`.
 - The pitch pages (`/creatives/`, `/offer/`, 404) self-host Lora + Poppins
   from `/fonts/`.
 - The demo bar's last link opens `https://vibeworthy.co/` in a new tab; the

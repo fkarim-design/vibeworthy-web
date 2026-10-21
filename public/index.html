@@ -674,14 +674,11 @@
       <a href="mailto:kalpna@vibeworthy.co">kalpna@vibeworthy.co</a></p>
   </div>
 </section>
-<style id="static-canvas-css">
-  /* Her Adobe Fonts kit (FreightTextCmp Pro = qhhw, Poppins = thsk, Sweet
-     Sans Pro = tgzb, Neue Haas Grotesk = wtqc) is licensed to her domain and
-     refuses this deploy, leaving the captured styles' bare family names to
-     fall back to the browser's default serif.  These later same-name faces
-     take precedence and serve the site's own files instead — Lora and
-     Poppins, the pitch's stand-ins for her faces.  Remove this block on
-     transfer to her domain so the real kit takes over. */
+<style id="fallback-faces">
+  /* Stand-in faces for her kit families, used until the real kit below
+     has loaded (and kept whenever it cannot): Lora and Poppins, the
+     pitch's substitutes. The kit bridge removes this block once every
+     real face is in. */
   @font-face{font-family:qhhw;font-style:normal;font-weight:400;src:url(/fonts/lora-latin-500-normal.woff2) format("woff2");font-display:swap}
   @font-face{font-family:qhhw;font-style:normal;font-weight:500;src:url(/fonts/lora-latin-500-normal.woff2) format("woff2");font-display:swap}
   @font-face{font-family:qhhw;font-style:normal;font-weight:600;src:url(/fonts/lora-latin-600-normal.woff2) format("woff2");font-display:swap}
@@ -691,6 +688,53 @@
   @font-face{font-family:thsk;font-style:italic;font-weight:700;src:url(/fonts/poppins-latin-600-normal.woff2) format("woff2");font-display:swap}
   @font-face{font-family:tgzb;font-style:normal;font-weight:600;src:url(/fonts/poppins-latin-600-normal.woff2) format("woff2");font-display:swap}
   @font-face{font-family:wtqc;font-style:normal;font-weight:400;src:url(/fonts/poppins-latin-400-normal.woff2) format("woff2");font-display:swap}
+</style>
+<script id="kit-bridge">
+/* Her exact faces, legally: an Adobe Fonts web project (kit xmc1iac,
+   licensed for this demo's domain and for vibeworthy.co) serves
+   FreightTextCmp Pro, Poppins, Sweet Sans Pro and Neue Haas Grotesk Text.
+   The kit's CSS names the real families; her captured styles name the
+   Typekit family codes, so each face is re-registered under its code.
+   Only when every face has loaded do the stand-ins above come out. */
+(function(){
+  if(!window.fetch||!window.FontFace||!document.fonts)return;
+  var KIT="https://use.typekit.net/xmc1iac.css";
+  var MAP={"freighttextcmp-pro":"qhhw","poppins":"thsk",
+           "sweet-sans-pro":"tgzb","neue-haas-grotesk-text":"wtqc"};
+  fetch(KIT).then(function(r){
+    if(!r.ok)throw new Error("kit "+r.status);
+    return r.text();
+  }).then(function(css){
+    var loads=[],re=/@font-face\s*\{([^}]*)\}/g,m;
+    while((m=re.exec(css))){
+      var decl={},parts=m[1].split(";");
+      for(var i=0;i<parts.length;i++){
+        var ci=parts[i].indexOf(":");
+        if(ci<0)continue;
+        decl[parts[i].slice(0,ci).trim().toLowerCase()]=
+          parts[i].slice(ci+1).trim();
+      }
+      var fam=(decl["font-family"]||"").replace(/["']/g,"").trim().toLowerCase();
+      var code=MAP[fam];
+      if(!code||!decl["src"])continue;
+      try{
+        var f=new FontFace(code,decl["src"],{
+          weight:decl["font-weight"]||"400",
+          style:decl["font-style"]||"normal",
+          display:"swap"});
+        document.fonts.add(f);
+        loads.push(f.load());
+      }catch(e){}
+    }
+    if(!loads.length)throw new Error("kit css empty");
+    return Promise.all(loads);
+  }).then(function(){
+    var fb=document.getElementById("fallback-faces");
+    if(fb)fb.parentNode.removeChild(fb);
+  }).catch(function(){/* kit unreachable: the stand-ins stay */});
+})();
+</script>
+<style id="static-canvas-css">
   html,body{min-width:0 !important}
   /* viewer.css freezes document scroll (html,body overflow:hidden) for the
      runtime's own scroll model; the static copy scrolls natively instead */
