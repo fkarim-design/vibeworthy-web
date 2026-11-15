@@ -45,26 +45,40 @@ package.json       wrangler devDependency + dev/deploy scripts
   natural size — centred, type constant — on wider ones; the hero's
   logo-to-masthead scrub, the pinned masthead with working nav pills and the
   marquees and the process cards' scroll-driven slide rebuilt from the
-  captured animation tracks). Do not edit her DOM, copy or images. Under 768px the canvas gives way to `#phone-render` — our
-  hand-stacked phone rendition of the same page: her copy, images and
-  colours verbatim, her font stacks with fallbacks. Her live phone layout is
-  separate and not in the capture; swap the rendition for the real thing if
-  her Readymag export ever arrives. Below her page — after the canvas and
+  captured animation tracks). Do not edit her DOM, copy or images (the one
+  sanctioned exception: her `font-family` declarations, rewritten as below).
+  A desktop window of any width keeps her canvas, scaled, exactly as her
+  own site does (the owner's side-by-side comparison, 15 Nov 2026). Only
+  touch phones — `(max-width:767px) and (pointer:coarse)`, one predicate
+  shared by `phone-render-css` and `PHONE` in `static-canvas-js` — get
+  `#phone-render`: our hand-stacked phone rendition of the same page, her
+  copy, images and colours verbatim, typeset from her measured type map
+  (FreightTextCmp for nearly everything, Poppins for the small print,
+  Pinyon Script numerals) with her client wall as her 5 × 3 hairline grid
+  at her measured logo widths. Her live phone layout is separate and not in
+  the capture; swap the rendition for the real thing if her Readymag export
+  ever arrives. Below her page — after the canvas and
   the phone rendition alike — sits `#people`, our pitch-added roster of her
   three creatives (owner request, 25 Aug 2026) linking to their
   `/creatives/<name>/` booking pages; `/creatives/` itself forwards to
-  `/#people`. Her kit faces (FreightTextCmp Pro = `qhhw`, Poppins = `thsk`,
-  Sweet Sans Pro = `tgzb`, Neue Haas Grotesk Text = `wtqc`) now load for
-  real: an Adobe Fonts web project on our own account (kit `xmc1iac`,
-  licensed for this deploy's domain, vibeworthy.co and localhost) serves the
-  exact faces, and the `kit-bridge` script in `index.html` fetches the kit
-  CSS and registers each face under her Typekit family codes. Only once
-  every face has loaded does it remove `#fallback-faces` — the self-hosted
-  Lora/Poppins stand-ins that dress the page whenever Adobe is unreachable
-  (a few one-line width patches in `static-canvas-js` are sized for those
-  wider stand-ins and sit harmlessly under the narrower real faces). Her own
-  captured Typekit rules stay in the head untouched. Inter + Pinyon Script
-  still load remotely via gstatic.
+  `/#people`. **Fonts:** her kit faces are FreightTextCmp Pro = `qhhw`,
+  Poppins = `thsk`, Sweet Sans Pro = `tgzb`, Neue Haas Grotesk Text =
+  `wtqc` (confirmed: our kit serves the very same Adobe font files her page
+  links). Our Adobe Fonts web project, kit `xmc1iac` (licensed for this
+  deploy's domain, vibeworthy.co and localhost), is loaded with Adobe's
+  standard `<link>` in the head — no script. Every `font-family` in her
+  styles reads licensed family first, her captured face second, stand-in
+  last, unquoted so inline style attributes stay valid:
+  `freighttextcmp-pro,qhhw,vw-serif` · `poppins,thsk,vw-sans` ·
+  `sweet-sans-pro,tgzb,vw-sans` · `neue-haas-grotesk-text,wtqc,vw-sans`.
+  The Lora/Poppins stand-ins in `#fallback-faces` live under their own
+  names (`vw-serif`, `vw-sans`). **Never declare stand-ins under her family
+  codes:** a later same-name face overrides her real one outright — that is
+  what kept her type off the page from v1.15 to v1.18. The one-line width
+  patches in `static-canvas-js` apply only when the stand-in serif is what
+  loaded. Her captured Typekit rules stay in the head untouched. Inter +
+  Pinyon Script still load remotely via gstatic. Verified 15 Nov 2026 in
+  Chromium on localhost: every face 200 from Adobe, stand-ins unused.
 - The pitch pages (`/creatives/`, `/offer/`, 404) keep the brand-matched look
   of v1.6 (her blues and cream, Lora + Poppins standing in for her faces).
   Do not change that look without being asked. On those pages the one-line
@@ -160,4 +174,5 @@ design are their own release, requested deliberately.
 | v1.15 | The type finds its voice again | Her font service refuses to dress the demo's address, so every headline had been falling back to a plain default face. The whole page — headlines, tickers, cards and all — now wears the site's own elegant serif and clean sans, with each line held to the width it was drawn for. |
 | v1.16 | The offer speaks only of the work | The demo bar slims to two tabs — the site and the offer — now that the people live on the front page itself. And the offer page no longer quotes a price: it makes the case on the work alone, with money left for the conversation. |
 | v1.17 | Every face fits its frame | The three portraits at the foot of the front page now sit properly in their windows — each crop anchored where the face is — so nobody loses their head on a phone or a monitor. |
-| v1.18 | The real typefaces take the stage | The demo now wears her actual faces — the compressed Freight serif, Poppins, Sweet Sans and Neue Haas — served legitimately through our own Adobe Fonts licence covering this address and hers. Wherever that service can't reach, the stand-ins stay on without a seam. |
+| v1.18 | The real typefaces take the stage | The demo now wears her actual faces — the compressed Freight serif, Poppins, Sweet Sans and Neue Haas — served legitimately through our own Adobe Fonts licence covering this address and hers. Wherever that service can't reach, the stand-ins stay on without a seam. (In practice this hand-off did not take in the owner's browser; v1.19 replaced it.) |
+| v1.19 | Her own type, her own grid, every face framed | Her real typefaces now load the standard way — the compressed Freight serif, Poppins and the script numerals of the process cards — on desktop and phone alike, and a narrowed desktop window keeps her own composition, scaled, just like her site. On phones, the client wall is her ruled five-by-three grid at her exact logo proportions, and the three portraits sit with every head whole. |

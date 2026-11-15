@@ -40,9 +40,11 @@ gives the canvas its height, scales it to fill narrower desktop viewports,
 caps it at its natural 1375px — centred, type constant — on wider ones, and
 rebuilds the scroll choreography (the logo's shrink into a pinned masthead,
 the fading welcome line, the running marquees, the nav pills) from the
-captured animation tracks. Under 768px the canvas gives way to
+captured animation tracks. A desktop window of any width keeps that canvas,
+scaled, as her own site does; only touch phones under 768px get
 `#phone-render`, a hand-stacked phone rendition of the same content — her
-copy, images and colours verbatim (her live site serves its own phone layout
+copy, images and colours verbatim, set in her own type map, with her client
+wall as her 5 × 3 hairline grid (her live site serves its own phone layout
 that a desktop save cannot contain). The live original stays one click away
 on the demo bar.
 
@@ -72,11 +74,11 @@ deploy. On transfer to the client's domain, re-point those `og:image` URLs.
 - **Fonts on `/`**: her real faces — FreightTextCmp Pro, Poppins, Sweet Sans
   Pro and Neue Haas Grotesk Text — load from Adobe Fonts (use.typekit.net)
   through our own web project, kit `xmc1iac`, licensed for this deploy's
-  domain, vibeworthy.co and localhost. A small bridge script in `index.html`
-  fetches the kit CSS and registers each face under the Typekit family codes
-  her captured styles use; until every face has loaded (or whenever Adobe is
-  unreachable) the page wears self-hosted Lora + Poppins stand-ins from
-  `/fonts/`. Inter and Pinyon Script load from fonts.gstatic.com via the
+  domain, vibeworthy.co and localhost, embedded with Adobe's standard
+  stylesheet link. Her styles' font stacks name the licensed family first,
+  her captured face second, and a self-hosted Lora / Poppins stand-in
+  (`vw-serif`, `vw-sans`) last, so the page stays legible if Adobe is
+  unreachable. Inter and Pinyon Script load from fonts.gstatic.com via the
   vendored `assets/rm/google-fonts.css`.
 - The pitch pages (`/creatives/`, `/offer/`, 404) self-host Lora + Poppins
   from `/fonts/`.
