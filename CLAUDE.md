@@ -10,7 +10,10 @@ owner-supplied "Webpage, Complete" capture of vibeworthy.co, vendored whole.
 The pitch adds her creatives as `#people` at the foot of `/` (with booking
 pages under `/creatives/<name>/`) and the `/offer/` page one tab away. Everything served lives in `public/` and there is no build step - the
 files in that directory are the site. The repo is connected to Cloudflare
-Workers Builds, so **every push to `main` deploys to production**.
+Workers Builds, so **every push to `main` deploys to production**. The
+demo is served at **vibe.fkarimdesign.com** and at
+vibeworthy-web.cloudflare-passport599.workers.dev — one Worker, byte-identical
+responses. Any new address must also be added to the font kit's domains.
 
 ```
 public/            everything served
@@ -64,8 +67,10 @@ package.json       wrangler devDependency + dev/deploy scripts
   `/#people`. **Fonts:** her kit faces are FreightTextCmp Pro = `qhhw`,
   Poppins = `thsk`, Sweet Sans Pro = `tgzb`, Neue Haas Grotesk Text =
   `wtqc` (confirmed: our kit serves the very same Adobe font files her page
-  links). Our Adobe Fonts web project, kit `xmc1iac` (licensed for this
-  deploy's domain, vibeworthy.co and localhost), is loaded with Adobe's
+  links). Our Adobe Fonts web project, kit `dhe6bjp` (licensed for
+  vibe.fkarimdesign.com, the workers.dev address, vibeworthy.co and
+  localhost; it replaced `xmc1iac`, which lacked the new address), is
+  loaded with Adobe's
   standard `<link>` in the head — no script. Every `font-family` in her
   styles reads licensed family first, her captured face second, stand-in
   last, unquoted so inline style attributes stay valid:
@@ -176,3 +181,4 @@ design are their own release, requested deliberately.
 | v1.17 | Every face fits its frame | The three portraits at the foot of the front page now sit properly in their windows — each crop anchored where the face is — so nobody loses their head on a phone or a monitor. |
 | v1.18 | The real typefaces take the stage | The demo now wears her actual faces — the compressed Freight serif, Poppins, Sweet Sans and Neue Haas — served legitimately through our own Adobe Fonts licence covering this address and hers. Wherever that service can't reach, the stand-ins stay on without a seam. (It never reached the live site: deploys stopped after v1.17, when the repository moved; v1.19 replaced it.) |
 | v1.19 | Her own type, her own grid, every face framed | Her real typefaces now load the standard way — the compressed Freight serif, Poppins and the script numerals of the process cards — on desktop and phone alike, and a narrowed desktop window keeps her own composition, scaled, just like her site. On phones, the client wall is her ruled five-by-three grid at her exact logo proportions, and the three portraits sit with every head whole. |
+| v1.20 | The fonts follow the demo to its new home | The demo's new address, vibe.fkarimdesign.com, is now covered by the font licence, so her real typefaces load there just as they do everywhere else the demo lives. |

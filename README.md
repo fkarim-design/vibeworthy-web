@@ -73,8 +73,9 @@ deploy. On transfer to the client's domain, re-point those `og:image` URLs.
 
 - **Fonts on `/`**: her real faces — FreightTextCmp Pro, Poppins, Sweet Sans
   Pro and Neue Haas Grotesk Text — load from Adobe Fonts (use.typekit.net)
-  through our own web project, kit `xmc1iac`, licensed for this deploy's
-  domain, vibeworthy.co and localhost, embedded with Adobe's standard
+  through our own web project, kit `dhe6bjp`, licensed for
+  vibe.fkarimdesign.com, the workers.dev address, vibeworthy.co and
+  localhost, embedded with Adobe's standard
   stylesheet link. Her styles' font stacks name the licensed family first,
   her captured face second, and a self-hosted Lora / Poppins stand-in
   (`vw-serif`, `vw-sans`) last, so the page stays legible if Adobe is
