@@ -62,8 +62,14 @@ package.json       wrangler devDependency + dev/deploy scripts
   from the owner's iPhone screenshot of vibeworthy.co (16 Nov 2026) and
   positioned in screen-width units, so every element lands within a point
   of hers on any phone. The sections below the hero are still our
-  restacking; match each to her phone screenshots as they arrive, or swap
-  in her Readymag export if it ever does. Below her page — after the canvas and
+  restacking, but their type is hers: sizes and weights for About, The
+  Process, Values, Contact, the ticker and the footer were measured from
+  her phone screenshots (16 Nov 2026; face, weight and size inferred from
+  each line's ink width and height against the real font metrics) and set
+  in screen-width units — the About text breaks on the same words as hers.
+  Services, Founder and Client Experience have no phone reference yet; match
+  them, and her section layouts, as her screenshots arrive, or swap in her
+  Readymag export if it ever does. Below her page — after the canvas and
   the phone rendition alike — sits `#people`, our pitch-added roster of her
   three creatives (owner request, 25 Aug 2026) linking to their
   `/creatives/<name>/` booking pages; `/creatives/` itself forwards to
@@ -187,3 +193,4 @@ design are their own release, requested deliberately.
 | v1.20 | The fonts follow the demo to its new home | The demo's new address, vibe.fkarimdesign.com, is now covered by the font licence, so her real typefaces load there just as they do everywhere else the demo lives. |
 | v1.21 | Her phone welcome, line for line | On phones, the opening screen now matches her own site's: Welcome to above, the big wordmark, a definition at each corner joined to it by her fine rules and dots, and the tagline beneath, all in her type and at her proportions on every size of phone. |
 | v1.22 | A safe fit when her fonts can't load | If a phone's browser blocks her font service, the opening screen now sets its definitions and tagline a size smaller so every line stays on screen; with her fonts in place, nothing changes. |
+| v1.23 | Her phone type, measured line by line | On phones, the headings, the About text, the process cards, the values and the contact lines now use her own sizes and weights, measured from her live site, so the About text even breaks on the same words as hers; the ticker and footer come down to her quieter size. |
