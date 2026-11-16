@@ -593,7 +593,11 @@
   .pr-motion .pr-strip .pr-card p{position:absolute;margin:0;padding:0}
   .pr-motion .pr-strip .pr-num{font-size:32.81vw;line-height:14.375vw}
   .pr-motion .pr-strip .pr-ct{font-size:10.94vw;line-height:14.375vw;white-space:nowrap}
-  .pr-motion .pr-strip .pr-card p{font-size:6.875vw;line-height:8.4375vw;top:54.7vw}
+  /* each line breaks where hers does and never wraps again: her first lines
+     fill their boxes to within 1-2px, so iPhone's slightly wider text
+     measure would otherwise push a word down and the last line out */
+  .pr-motion .pr-strip .pr-card p{font-size:6.875vw;line-height:8.4375vw;top:54.7vw;
+    white-space:nowrap}
   .pr-motion .pr-strip .pr-card:nth-child(1) .pr-num{left:2.81vw;top:10.94vw}
   .pr-motion .pr-strip .pr-card:nth-child(1) .pr-ct{left:13.76vw;top:18.13vw}
   .pr-motion .pr-strip .pr-card:nth-child(1) p{left:6.87vw;width:52.81vw}
@@ -610,7 +614,8 @@
   /* the stand-in serif runs ~1.4x wider: keep every title and line inside
      its fixed card */
   .vw-standin.pr-motion .pr-strip .pr-ct{font-size:8.2vw}
-  .vw-standin.pr-motion .pr-strip .pr-card p{font-size:5.5vw;line-height:6.6vw}
+  .vw-standin.pr-motion .pr-strip .pr-card p{font-size:5.5vw;line-height:6.6vw;
+    white-space:normal}
   /* the shooting star that crosses above the closing ticker */
   .pr-motion #phone-render .pr-contact{padding-bottom:26.6vw}
   .pr-motion .pr-contact a{display:inline-block}
@@ -687,13 +692,13 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
     <h2>The Process</h2>
     <div class="pr-strip">
     <div class="pr-card pr-blue"><div class="pr-head"><span class="pr-num">1</span><span class="pr-ct">Consultation</span></div>
-      <p>Let’s vibe and identify your goals.</p></div>
+      <p>Let’s vibe and identify<br>your goals.</p></div>
     <div class="pr-card pr-cream"><div class="pr-head"><span class="pr-num">2</span><span class="pr-ct">Strategy &amp;<br>&nbsp;&nbsp;&nbsp;&nbsp;Planning</span></div>
-      <p>We problem-solve with purpose and edge.</p></div>
+      <p>We problem-solve with<br>purpose and edge.</p></div>
     <div class="pr-card pr-blue"><div class="pr-head"><span class="pr-num">3</span><span class="pr-ct">Creative</span></div>
-      <p>Bringing your unique vision to life.</p></div>
+      <p>Bringing your unique<br>vision to life.</p></div>
     <div class="pr-card pr-cream"><div class="pr-head"><span class="pr-num">4</span><span class="pr-ct">Activation</span></div>
-      <p>Engaging with impact and authenticity.</p></div>
+      <p>Engaging with impact<br>and authenticity.</p></div>
     </div>
   </section>
   <section>

@@ -85,7 +85,10 @@ package.json       wrangler devDependency + dev/deploy scripts
   navy (`#091f92`) Services panel sweeps in from the right; headings, text,
   service lines, logo rows and values rise and fade in; the process cards
   sit on her staircase (68.75 × 80vw, each 71.4vw right and 42.8vw down)
-  and slide 932.5vw left over 619.4vw of scroll; a shooting star crosses
+  and slide 932.5vw left over 619.4vw of scroll (each card's line breaks
+  where hers does and never re-wraps: her first lines fill their boxes to
+  within 1–2px, and iPhone's slightly wider text measure pushed card 2's
+  last word out of the card, v1.25); a shooting star crosses
   above the closing ticker. `phone-motion-flag` sets `html.pr-motion`
   before the rendition parses; without it — reduced motion, no script, an
   error — the still, stacked rendition stands. The direct call to her
@@ -216,3 +219,4 @@ design are their own release, requested deliberately.
 | v1.22 | A safe fit when her fonts can't load | If a phone's browser blocks her font service, the opening screen now sets its definitions and tagline a size smaller so every line stays on screen; with her fonts in place, nothing changes. |
 | v1.23 | Her phone type, measured line by line | On phones, the headings, the About text, the process cards, the values and the contact lines now use her own sizes and weights, measured from her live site, so the About text even breaks on the same words as hers; the ticker and footer come down to her quieter size. |
 | v1.24 | Her phone page moves the way hers does | On phones, the page now moves as you scroll just as her own phone site does: the wordmark shrinks away, the Services panel sweeps in from the side, headings and lines rise into place, the four process cards glide across on her diagonal, and a shooting star crosses at the foot. Phones set to reduce motion keep the still page. |
+| v1.25 | Every process card holds its two lines | On phones, each process card's line now always sits on two lines, breaking exactly where hers does, so the Strategy & Planning card no longer pushes its last word out of the bottom on iPhones; the words and their size are unchanged. |
