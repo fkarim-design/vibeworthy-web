@@ -53,7 +53,8 @@ package.json       wrangler devDependency + dev/deploy scripts
   A desktop window of any width keeps her canvas, scaled, exactly as her
   own site does (the owner's side-by-side comparison, 15 Nov 2026). Only
   touch phones — `(max-width:767px) and (pointer:coarse)`, one predicate
-  shared by `phone-render-css` and `PHONE` in `static-canvas-js` — get
+  shared by `phone-render-css`, `PHONE` in `static-canvas-js` and
+  `phone-motion-flag`/`phone-motion-js` — get
   `#phone-render`: our hand-stacked phone rendition of the same page, her
   copy, images and colours verbatim, typeset from her measured type map
   (FreightTextCmp for nearly everything, Poppins for the small print,
@@ -67,9 +68,29 @@ package.json       wrangler devDependency + dev/deploy scripts
   her phone screenshots (16 Nov 2026; face, weight and size inferred from
   each line's ink width and height against the real font metrics) and set
   in screen-width units — the About text breaks on the same words as hers.
-  Services, Founder and Client Experience have no phone reference yet; match
-  them, and her section layouts, as her screenshots arrive, or swap in her
-  Readymag export if it ever does. Below her page — after the canvas and
+  Services, Founder and Client Experience are not yet matched to her phone
+  layout, nor are her section layouts (her 3-column wall, three separate
+  values boxes, the ticker's star separators). **Phone motion** (v1.24, the
+  owner's "bring back the sliding scroll bits … like the original"): her
+  live phone site renders in headless Chromium at 402 × 874 (touch) once
+  the environment allows vibeworthy.co, st-p.rmcdn1.net, c-p.rmcdn.net,
+  c-p.rmcdn1.net, i-p.rmcdn.net and fonts.googleapis.com; scrolling its
+  `.content-scroll-wrapper` and reading each widget's box gave her whole
+  scroll choreography (16 Nov 2026), which `phone-motion-js` replays on
+  `#phone-render`. As on hers, every move is scrubbed by the scroll
+  position with easeInOutQuad and starts the moment the element's top
+  reaches the bottom of the screen, and every distance and scroll length
+  is in screen-width units (confirmed at 402 and 360 wide): the wordmark
+  shrinks to a third and "Welcome to" fades from the top of the page; her
+  navy (`#091f92`) Services panel sweeps in from the right; headings, text,
+  service lines, logo rows and values rise and fade in; the process cards
+  sit on her staircase (68.75 × 80vw, each 71.4vw right and 42.8vw down)
+  and slide 932.5vw left over 619.4vw of scroll; a shooting star crosses
+  above the closing ticker. `phone-motion-flag` sets `html.pr-motion`
+  before the rendition parses; without it — reduced motion, no script, an
+  error — the still, stacked rendition stands. The direct call to her
+  widget API was refused as unauthorised access: measure the rendered page,
+  never her API. Below her page — after the canvas and
   the phone rendition alike — sits `#people`, our pitch-added roster of her
   three creatives (owner request, 25 Aug 2026) linking to their
   `/creatives/<name>/` booking pages; `/creatives/` itself forwards to
@@ -194,3 +215,4 @@ design are their own release, requested deliberately.
 | v1.21 | Her phone welcome, line for line | On phones, the opening screen now matches her own site's: Welcome to above, the big wordmark, a definition at each corner joined to it by her fine rules and dots, and the tagline beneath, all in her type and at her proportions on every size of phone. |
 | v1.22 | A safe fit when her fonts can't load | If a phone's browser blocks her font service, the opening screen now sets its definitions and tagline a size smaller so every line stays on screen; with her fonts in place, nothing changes. |
 | v1.23 | Her phone type, measured line by line | On phones, the headings, the About text, the process cards, the values and the contact lines now use her own sizes and weights, measured from her live site, so the About text even breaks on the same words as hers; the ticker and footer come down to her quieter size. |
+| v1.24 | Her phone page moves the way hers does | On phones, the page now moves as you scroll just as her own phone site does: the wordmark shrinks away, the Services panel sweeps in from the side, headings and lines rise into place, the four process cards glide across on her diagonal, and a shooting star crosses at the foot. Phones set to reduce motion keep the still page. |

@@ -516,7 +516,7 @@
      her line breaks at her size */
   #phone-render .pr-about{padding-left:7.2vw;padding-right:10.8vw}
   .pr-about p{font-size:6.23vw;line-height:1.145;margin:0 0 1.145em}
-  .pr-services{background:#1a3da4;color:#fbfae9}
+  .pr-services{background:#091f92;color:#fbfae9}
   .pr-services h2{color:#fbfae9}
   .pr-services ul{list-style:none;padding:0}
   .pr-services li{font-size:19px;line-height:1.25;margin:0 0 13px}
@@ -565,7 +565,63 @@
   .pr-foot img{width:120px;height:auto;display:block;margin:0 0 14px}
   .pr-foot p{font-style:italic;font-weight:500;font-size:3.08vw}
   .pr-foot a{color:#fbfae9}
+  /* her phone motion, measured from her live phone layout (16 Nov 2026) and
+     driven from scroll by phone-motion-js, which sets html.pr-motion on
+     touch phones that allow motion. Without it (reduced motion, no script)
+     the still, stacked rendition above stands. Sizes in screen-width units,
+     as her layout scales. */
+  .pr-svc-bg,.pr-shoot{display:none}
+  /* Services: her navy panel sweeps in from the right */
+  .pr-motion .pr-services{position:relative;overflow:hidden;background:none}
+  .pr-motion .pr-svc-bg{display:block;position:absolute;top:0;bottom:0;
+    left:-21.9vw;width:142.8vw;background:#091f92;will-change:transform}
+  .pr-motion .pr-services>h2,.pr-motion .pr-services>ul{position:relative}
+  /* The Process: her four cards on a staircase (each 71.4vw right and
+     42.8vw down of the last), the whole run sliding left as you scroll */
+  .pr-motion #phone-render .pr-process{overflow:hidden;padding-bottom:0}
+  .pr-motion .pr-strip{position:relative;width:100vw;height:208.44vw;
+    margin:11.68vw 0 0 -24px;will-change:transform}
+  .pr-motion #phone-render .pr-process+section{padding-top:6.29vw}
+  .pr-motion .pr-strip .pr-card{position:absolute;margin:0;padding:0;
+    width:68.75vw;height:80vw;border-radius:12.81vw}
+  .pr-motion .pr-strip .pr-card:nth-child(1){left:57.19vw;top:0}
+  .pr-motion .pr-strip .pr-card:nth-child(2){left:128.44vw;top:42.81vw}
+  .pr-motion .pr-strip .pr-card:nth-child(3){left:200vw;top:85.63vw}
+  .pr-motion .pr-strip .pr-card:nth-child(4){left:271.56vw;top:128.44vw}
+  .pr-motion .pr-strip .pr-head{display:block}
+  .pr-motion .pr-strip .pr-num,.pr-motion .pr-strip .pr-ct,
+  .pr-motion .pr-strip .pr-card p{position:absolute;margin:0;padding:0}
+  .pr-motion .pr-strip .pr-num{font-size:32.81vw;line-height:14.375vw}
+  .pr-motion .pr-strip .pr-ct{font-size:10.94vw;line-height:14.375vw;white-space:nowrap}
+  .pr-motion .pr-strip .pr-card p{font-size:6.875vw;line-height:8.4375vw;top:54.7vw}
+  .pr-motion .pr-strip .pr-card:nth-child(1) .pr-num{left:2.81vw;top:10.94vw}
+  .pr-motion .pr-strip .pr-card:nth-child(1) .pr-ct{left:13.76vw;top:18.13vw}
+  .pr-motion .pr-strip .pr-card:nth-child(1) p{left:6.87vw;width:52.81vw}
+  .pr-motion .pr-strip .pr-card:nth-child(2) .pr-num{left:2.81vw;top:13.46vw}
+  .pr-motion .pr-strip .pr-card:nth-child(2) .pr-ct{left:22.81vw;top:22.51vw;
+    line-height:11.5625vw}
+  .pr-motion .pr-strip .pr-card:nth-child(2) p{left:6.89vw;width:53.43vw}
+  .pr-motion .pr-strip .pr-card:nth-child(3) .pr-num{left:6.24vw;top:13.46vw}
+  .pr-motion .pr-strip .pr-card:nth-child(3) .pr-ct{left:25.94vw;top:20.64vw}
+  .pr-motion .pr-strip .pr-card:nth-child(3) p{left:6.87vw;width:50vw}
+  .pr-motion .pr-strip .pr-card:nth-child(4) .pr-num{left:3.11vw;top:14.7vw}
+  .pr-motion .pr-strip .pr-card:nth-child(4) .pr-ct{left:25vw;top:20.94vw}
+  .pr-motion .pr-strip .pr-card:nth-child(4) p{left:6.57vw;top:55vw;width:53.43vw}
+  /* the shooting star that crosses above the closing ticker */
+  .pr-motion #phone-render .pr-contact{padding-bottom:26.6vw}
+  .pr-motion .pr-contact a{display:inline-block}
+  .pr-motion .pr-shoot{display:block;position:relative;height:0}
+  .pr-shoot i{position:absolute;left:0;width:100vw;top:-15.4vw;height:11vw;overflow:hidden}
+  .pr-shoot img{position:absolute;left:96.57vw;top:0;width:19.38vw;height:auto}
 </style>
+<script id="phone-motion-flag">
+/* set before the phone rendition parses, so her moving layout is the first
+   thing a phone paints; phone-motion-js drives it (and clears the flag if
+   it cannot run). Same query as phone-render-css and static-canvas-js. */
+if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").matches&&
+   !matchMedia("(prefers-reduced-motion:reduce)").matches)
+  document.documentElement.classList.add("pr-motion");
+</script>
 <div id="phone-render">
   <section class="pr-hero">
     <div class="pr-hstage">
@@ -586,6 +642,7 @@
     <p>We want to empower you with a creative strategy to put you on the cultural map, growing your brand and fostering tight-knit communities globally.</p>
   </section>
   <section class="pr-services">
+    <i class="pr-svc-bg" aria-hidden="true"></i>
     <h2>Services</h2>
     <ul>
       <li>Culture Marketing Consultancy</li>
@@ -624,14 +681,16 @@
   </section>
   <section class="pr-process">
     <h2>The Process</h2>
+    <div class="pr-strip">
     <div class="pr-card pr-blue"><div class="pr-head"><span class="pr-num">1</span><span class="pr-ct">Consultation</span></div>
       <p>Let’s vibe and identify your goals.</p></div>
-    <div class="pr-card pr-cream"><div class="pr-head"><span class="pr-num">2</span><span class="pr-ct">Strategy &amp; Planning</span></div>
+    <div class="pr-card pr-cream"><div class="pr-head"><span class="pr-num">2</span><span class="pr-ct">Strategy &amp;<br>&nbsp;&nbsp;&nbsp;&nbsp;Planning</span></div>
       <p>We problem-solve with purpose and edge.</p></div>
     <div class="pr-card pr-blue"><div class="pr-head"><span class="pr-num">3</span><span class="pr-ct">Creative</span></div>
       <p>Bringing your unique vision to life.</p></div>
     <div class="pr-card pr-cream"><div class="pr-head"><span class="pr-num">4</span><span class="pr-ct">Activation</span></div>
       <p>Engaging with impact and authenticity.</p></div>
+    </div>
   </section>
   <section>
     <h2>Values</h2>
@@ -655,6 +714,7 @@
     <p class="pr-line">For project enquiries contact</p>
     <a href="mailto:kalpna@vibeworthy.co">kalpna@vibeworthy.co</a>
   </section>
+  <div class="pr-shoot" aria-hidden="true"><i><img src="/assets/rm/image-3306f450-5b9e-4014-9db3-2c9ae4f88a60.webp" alt=""></i></div>
   <div class="pr-band"><span class="pr-track">You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; </span></div>
   <div class="pr-foot">
     <img src="/assets/rm/image-0cd8235a-e096-4766-9aa3-aa8284bee964.webp" alt="Vibe Worthy">
@@ -994,6 +1054,157 @@
         });
       })(pills[m]);
     }
+  }
+})();
+</script>
+<script id="phone-motion-js">
+/* her phone layout's scroll choreography, rebuilt from measurements of her
+   live phone site (16 Nov 2026). As there, every move is scrubbed by the
+   scroll position, eased in and out, and starts the moment the element's
+   top reaches the bottom of the screen; distances and scroll lengths are in
+   screen-width units (vw), as her layout scales with the phone. */
+(function(){
+  var root=document.documentElement;
+  var pr=document.getElementById("phone-render");
+  if(!pr)return;
+  var PHONE=window.matchMedia&&window.matchMedia("(max-width:767px) and (pointer:coarse)");
+  var CALM=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)");
+  try{
+    if(!PHONE||!window.requestAnimationFrame) throw 0;
+    function all(sel){return Array.prototype.slice.call(pr.querySelectorAll(sel));}
+    function inQ(t){return t<.5?2*t*t:1-(2-2*t)*(2-2*t)/2;}
+    function inC(t){return t<.5?4*t*t*t:1-(2-2*t)*(2-2*t)*(2-2*t)/2;}
+    function outQ(t){return 1-(1-t)*(1-t);}
+    var tracks=[];
+    /* els move together from (x0,y0) to (x1,y1) vw over `run` vw of scroll,
+       fading in from transparent if `fade` */
+    function track(els,x0,y0,x1,y1,run,fade,ease){
+      els=els.filter(Boolean);
+      if(els.length) tracks.push({els:els,x0:x0,y0:y0,x1:x1,y1:y1,run:run,
+        fade:fade,ease:ease||inQ,top:0,e:-1});
+    }
+    function rise(els,dy,run,fade,ease){track(els,0,dy,0,0,run,fade,ease);}
+
+    rise(all(".pr-about h2"),21.24,53,false);
+    rise(all(".pr-about p"),21.24,42.5,false);
+    track(all(".pr-svc-bg"),228.7,0,0,0,25.6,true);
+    rise(all(".pr-services h2"),23.76,47.5,true);
+    all(".pr-services li").forEach(function(li){rise([li],17.81,35.8,true);});
+    rise(all(".pr-founder h2"),10,19.9,true);
+    rise(all(".pr-founder .pr-sub,.pr-founder .pr-intro"),9.7,19.4,true);
+    rise(all(".pr-founder .pr-photo"),5.95,10.7,false,inC);
+    rise(all(".pr-founder h3"),4.38,5.47,false);
+    var logos=all(".pr-wall img");
+    for(var r=0;r<logos.length;r+=5) rise(logos.slice(r,r+5),10,32.8,true);
+    rise(all(".pr-process h2"),10,97,true);
+    track(all(".pr-strip"),0,0,-932.5,0,619.4,false);
+    var box=pr.querySelector(".pr-values-box");
+    if(box){
+      rise([box.parentNode.querySelector("h2")],10,97,true);
+      /* her outline fades in on its own: fade our box's border, not the
+         text it holds */
+      track([box],0,0,0,0,93.8,"border");
+      var groups=[],kids=box.children;
+      for(var k=0;k<kids.length;k++){
+        if(kids[k].tagName==="H3"){rise([kids[k]],10,19.9,true);groups.push([]);}
+        else if(groups.length) groups[groups.length-1].push(kids[k]);
+      }
+      groups.forEach(function(g){rise(g,10,19.9,true);});
+    }
+    rise(all(".pr-contact h2"),10,97,true);
+    rise(all(".pr-contact .pr-line,.pr-contact a"),10,97,true);
+    track(all(".pr-shoot img"),0,0,-114.5,0,66.2,false);
+    var wel=pr.querySelector(".pr-welcome"),logo=pr.querySelector(".pr-logo");
+
+    var on=false,ticking=false;
+    function clear(){
+      tracks.forEach(function(t){t.e=-1;t.els.forEach(function(el){
+        el.style.transform="";el.style.opacity="";el.style.borderColor="";});});
+      if(wel){wel.style.transform="";wel.style.opacity="";}
+      if(logo)logo.style.transform="";
+    }
+    /* where each element sits in the page, untransformed */
+    /* anything unexpected: back to the still rendition */
+    function fail(){
+      on=false;root.classList.remove("pr-motion");
+      try{clear();}catch(e){}
+    }
+    function measure(){
+      if(!on)return;
+      try{
+        clear();
+        var y=window.pageYOffset;
+        tracks.forEach(function(t){
+          var top=Infinity;
+          t.els.forEach(function(el){top=Math.min(top,el.getBoundingClientRect().top+y);});
+          t.top=top;
+        });
+      }catch(err){fail();return;}
+      update();
+    }
+    function update(){
+      ticking=false;
+      if(!on)return;
+      try{step();}catch(err){fail();}
+    }
+    function step(){
+      /* iOS rubber-band overscroll reads negative: hold the top at rest */
+      var y=Math.max(0,window.pageYOffset),U=root.clientWidth/100,VH=root.clientHeight;
+      for(var i=0;i<tracks.length;i++){
+        var t=tracks[i];
+        var p=(y-(t.top+t.y0*U-VH))/(t.run*U);
+        p=p<0?0:p>1?1:p;
+        var e=t.ease(p);
+        if(e===t.e)continue;
+        t.e=e;
+        var tx=t.x0+(t.x1-t.x0)*e,ty=t.y0+(t.y1-t.y0)*e;
+        var tr=(tx||ty)?"translate3d("+tx.toFixed(3)+"vw,"+ty.toFixed(3)+"vw,0)":"none";
+        for(var j=0;j<t.els.length;j++){
+          t.els[j].style.transform=tr;
+          if(t.fade==="border")
+            t.els[j].style.borderColor="rgba(26,61,164,"+(.4*e).toFixed(3)+")";
+          else if(t.fade)t.els[j].style.opacity=e.toFixed(3);
+        }
+      }
+      /* the hero, from the top of the page: "Welcome to" shrinks to 70% and
+         fades; the wordmark shrinks to a third, settling slightly, then lifts
+         away (by then above the screen) */
+      if(wel){
+        var w=outQ(Math.min(1,y/(118*U)));
+        wel.style.transform=w?"scale("+(1-.302*w).toFixed(4)+")":"";
+        wel.style.opacity=w?(1-w).toFixed(3):"";
+      }
+      if(logo){
+        var a=inQ(Math.min(1,y/(93.5*U)));
+        var b=inQ(Math.max(0,Math.min(1,(y-93.5*U)/(70.8*U))));
+        logo.style.transform=(a||b)?"translate3d(0,"+(6.6*a-70.6*b).toFixed(3)+
+          "vw,0) scale("+(1-.66*a).toFixed(4)+")":"";
+      }
+    }
+    function kick(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
+    var remeasure=false;
+    function later(){if(!remeasure){remeasure=true;requestAnimationFrame(function(){
+      remeasure=false;measure();});}}
+    function sync(){
+      var want=PHONE.matches&&!(CALM&&CALM.matches);
+      if(want===on){if(on)later();return;}
+      on=want;
+      root.classList.toggle("pr-motion",on);
+      if(on)measure();else clear();
+    }
+    window.addEventListener("scroll",kick,{passive:true});
+    window.addEventListener("resize",later);
+    window.addEventListener("load",later);
+    function watch(mq){if(!mq)return;
+      if(mq.addEventListener)mq.addEventListener("change",sync);
+      else if(mq.addListener)mq.addListener(sync);}
+    watch(PHONE);watch(CALM);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+    /* text reflows when her fonts land, images size in: re-measure */
+    if(window.ResizeObserver)new ResizeObserver(later).observe(pr);
+    sync();
+  }catch(err){
+    root.classList.remove("pr-motion");
   }
 })();
 </script>
