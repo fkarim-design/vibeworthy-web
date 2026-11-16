@@ -82,7 +82,7 @@ package.json       wrangler devDependency + dev/deploy scripts
   The Lora/Poppins stand-ins in `#fallback-faces` live under their own
   names (`vw-serif`, `vw-sans`). **Never declare stand-ins under her family
   codes:** a later same-name face overrides her real one outright — that is
-  what kept her type off the live page from v1.15 on. Deploys stopped after v1.17 when the repository moved to fkarim-design/vibeworthy-web: check the live page actually changed after every release. The one-line width
+  what kept her type off the live page from v1.15 on. Deploys stopped after v1.17 when the repository moved to fkarim-design/vibeworthy-web and resumed once it was reconnected (v1.21, 16 Nov 2026): check the live page actually changed after every release. The one-line width
   patches in `static-canvas-js` apply only when the stand-in serif is what
   loaded. Her captured Typekit rules stay in the head untouched. Inter +
   Pinyon Script still load remotely via gstatic. Verified 15 Nov 2026 in
@@ -186,3 +186,4 @@ design are their own release, requested deliberately.
 | v1.19 | Her own type, her own grid, every face framed | Her real typefaces now load the standard way — the compressed Freight serif, Poppins and the script numerals of the process cards — on desktop and phone alike, and a narrowed desktop window keeps her own composition, scaled, just like her site. On phones, the client wall is her ruled five-by-three grid at her exact logo proportions, and the three portraits sit with every head whole. |
 | v1.20 | The fonts follow the demo to its new home | The demo's new address, vibe.fkarimdesign.com, is now covered by the font licence, so her real typefaces load there just as they do everywhere else the demo lives. |
 | v1.21 | Her phone welcome, line for line | On phones, the opening screen now matches her own site's: Welcome to above, the big wordmark, a definition at each corner joined to it by her fine rules and dots, and the tagline beneath, all in her type and at her proportions on every size of phone. |
+| v1.22 | A safe fit when her fonts can't load | If a phone's browser blocks her font service, the opening screen now sets its definitions and tagline a size smaller so every line stays on screen; with her fonts in place, nothing changes. |

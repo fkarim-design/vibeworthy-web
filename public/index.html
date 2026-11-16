@@ -502,6 +502,11 @@
   .pr-rule2{left:11.78vw;top:90.22vw;width:5.06vw;height:15.67vw;
     border-left-width:1px;border-top-width:1px}
   .pr-rule2::after{right:-0.9vw;top:-0.9vw}
+  /* stand-in serif (Adobe unreachable, e.g. a blocker) runs ~1.4x wider than
+     compressed Freight: shrink the nowrap lines so nothing leaves the screen */
+  .vw-standin .pr-hstage .pr-def1{font-size:3.5vw}
+  .vw-standin .pr-hstage .pr-def2{font-size:3.45vw}
+  .vw-standin .pr-hstage .pr-tag{font-size:4.75vw}
   .pr-band{background:#fbfae9;overflow:hidden;padding:12px 0;white-space:nowrap}
   .pr-track{display:inline-block;animation:pr-marquee 22s linear infinite;font-size:27px}
   @keyframes pr-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -790,6 +795,7 @@
     "Design":1,"Animation":1,"Vibes":1,
     "The Vibes":1,"The People":1,"The Creativity":1};
   function standinPatches(){
+    document.documentElement.classList.add("vw-standin");
     for(var k=0;k<tw.length;k++){
       var wtxt=tw[k].textContent.replace(/\s+/g," ").trim();
       if(ONELINE[wtxt]) tw[k].style.whiteSpace="nowrap";
