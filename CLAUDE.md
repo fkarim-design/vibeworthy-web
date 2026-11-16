@@ -58,9 +58,12 @@ package.json       wrangler devDependency + dev/deploy scripts
   copy, images and colours verbatim, typeset from her measured type map
   (FreightTextCmp for nearly everything, Poppins for the small print,
   Pinyon Script numerals) with her client wall as her 5 × 3 hairline grid
-  at her measured logo widths. Her live phone layout is separate and not in
-  the capture; swap the rendition for the real thing if her Readymag export
-  ever arrives. Below her page — after the canvas and
+  at her measured logo widths. Its hero IS her live phone hero: rebuilt
+  from the owner's iPhone screenshot of vibeworthy.co (16 Nov 2026) and
+  positioned in screen-width units, so every element lands within a point
+  of hers on any phone. The sections below the hero are still our
+  restacking; match each to her phone screenshots as they arrive, or swap
+  in her Readymag export if it ever does. Below her page — after the canvas and
   the phone rendition alike — sits `#people`, our pitch-added roster of her
   three creatives (owner request, 25 Aug 2026) linking to their
   `/creatives/<name>/` booking pages; `/creatives/` itself forwards to
@@ -182,3 +185,4 @@ design are their own release, requested deliberately.
 | v1.18 | The real typefaces take the stage | The demo now wears her actual faces — the compressed Freight serif, Poppins, Sweet Sans and Neue Haas — served legitimately through our own Adobe Fonts licence covering this address and hers. Wherever that service can't reach, the stand-ins stay on without a seam. (It never reached the live site: deploys stopped after v1.17, when the repository moved; v1.19 replaced it.) |
 | v1.19 | Her own type, her own grid, every face framed | Her real typefaces now load the standard way — the compressed Freight serif, Poppins and the script numerals of the process cards — on desktop and phone alike, and a narrowed desktop window keeps her own composition, scaled, just like her site. On phones, the client wall is her ruled five-by-three grid at her exact logo proportions, and the three portraits sit with every head whole. |
 | v1.20 | The fonts follow the demo to its new home | The demo's new address, vibe.fkarimdesign.com, is now covered by the font licence, so her real typefaces load there just as they do everywhere else the demo lives. |
+| v1.21 | Her phone welcome, line for line | On phones, the opening screen now matches her own site's: Welcome to above, the big wordmark, a definition at each corner joined to it by her fine rules and dots, and the tagline beneath, all in her type and at her proportions on every size of phone. |

@@ -479,12 +479,29 @@
   #phone-render section{padding:44px 24px}
   #phone-render h2{font-size:36px;line-height:1.15;letter-spacing:.1px;margin-bottom:20px}
   #phone-render a{color:inherit}
-  .pr-hero{text-align:center;padding-top:34px !important}
-  .pr-hero .pr-welcome{font-size:34px;line-height:1.1;text-align:left;margin:0 0 4px}
-  .pr-hero img.pr-logo{width:78%;max-width:330px;height:auto;margin:6px auto 4px;display:block}
-  .pr-def{font-size:14.5px;font-weight:500;line-height:1.35;margin:12px auto 0;max-width:30ch}
+  /* her phone hero, measured from a screenshot of her live phone layout
+     (owner, 16 Nov 2026): every position and size in screen-width units,
+     so it scales with the phone exactly as hers does */
+  #phone-render .pr-hero{padding:0}
+  .pr-hstage{position:relative;height:161vw;overflow:hidden}
+  .pr-hstage>*{position:absolute;margin:0}
+  .pr-hstage .pr-welcome{left:10.33vw;top:19.13vw;font-size:9.38vw;line-height:1;white-space:nowrap}
+  .pr-hstage .pr-logo{left:6.39vw;top:56.80vw;width:87.32vw;height:auto;max-width:none}
+  .pr-def{font-weight:500;text-align:center;white-space:nowrap}
   .pr-def em{font-style:italic}
-  .pr-hero .pr-tag{font-size:20px;line-height:1.3;margin:24px auto 0;max-width:28ch}
+  .pr-hstage .pr-def1{left:39.07vw;width:60vw;top:37.09vw;font-size:4.38vw;line-height:5.017vw}
+  .pr-hstage .pr-def2{left:3.55vw;width:40vw;top:108.98vw;font-size:4.312vw;line-height:4.975vw}
+  .pr-hstage .pr-tag{left:0;width:100vw;text-align:center;top:133.39vw;font-size:5.935vw;
+    line-height:7.794vw;white-space:nowrap}
+  .pr-rule{border:0 solid #1a3da4}
+  .pr-rule::after{content:"";position:absolute;width:1.8vw;height:1.8vw;border-radius:50%;
+    background:#1a3da4}
+  .pr-rule1{left:54.93vw;top:54.40vw;width:15.97vw;height:15.50vw;
+    border-right-width:1px;border-bottom-width:1px}
+  .pr-rule1::after{left:-0.9vw;bottom:-0.9vw}
+  .pr-rule2{left:11.78vw;top:90.22vw;width:5.06vw;height:15.67vw;
+    border-left-width:1px;border-top-width:1px}
+  .pr-rule2::after{right:-0.9vw;top:-0.9vw}
   .pr-band{background:#fbfae9;overflow:hidden;padding:12px 0;white-space:nowrap}
   .pr-track{display:inline-block;animation:pr-marquee 22s linear infinite;font-size:27px}
   @keyframes pr-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -541,11 +558,15 @@
 </style>
 <div id="phone-render">
   <section class="pr-hero">
-    <p class="pr-welcome">Welcome to</p>
-    <img class="pr-logo" src="/assets/rm/image-1c98fb78-a36c-4eac-9fe8-a17197065940.webp" alt="Vibe Worthy">
-    <p class="pr-def">Definition: <em>“the mood of a place, situation, person, etc. and the way that they make you feel”</em></p>
-    <p class="pr-def">Definition: <em>“deserving respect, admiration”</em></p>
-    <p class="pr-tag">A culture marketing and empowerment consultancy for brands and music artists</p>
+    <div class="pr-hstage">
+      <p class="pr-welcome">Welcome to</p>
+      <img class="pr-logo" src="/assets/rm/image-1c98fb78-a36c-4eac-9fe8-a17197065940.webp" alt="Vibe Worthy">
+      <p class="pr-def pr-def1">Definition: <em>“the mood of a place,<br>situation, person, etc. and the way<br>that they make you feel”</em></p>
+      <i class="pr-rule pr-rule1" aria-hidden="true"></i>
+      <i class="pr-rule pr-rule2" aria-hidden="true"></i>
+      <p class="pr-def pr-def2">Definition: <em>“deserving<br>respect, admiration”</em></p>
+      <p class="pr-tag">A culture marketing and empowerment<br>consultancy for brands and music artists</p>
+    </div>
   </section>
   <div class="pr-band"><span class="pr-track">You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; </span></div>
   <section class="pr-about">
