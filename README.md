@@ -44,8 +44,9 @@ captured animation tracks. A desktop window of any width keeps that canvas,
 scaled, as her own site does; only touch phones under 768px get
 `#phone-render`, a hand-stacked phone rendition of the same content — her
 copy, images and colours verbatim, set in her own type map, with her client
-wall as her 5 × 3 hairline grid (her live site serves its own phone layout
-that a desktop save cannot contain). On phones that allow motion,
+wall as her own phone layout's 3 × 5 hairline grid (her live site serves its
+own phone layout, which a desktop save cannot contain, so it was measured
+from her live phone site). On phones that allow motion,
 `phone-motion-js` replays her phone layout's scroll choreography, measured
 from her live phone site: the shrinking wordmark, the Services panel's
 sweep, headings and lines rising into place, the process cards gliding

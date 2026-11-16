@@ -58,8 +58,12 @@ package.json       wrangler devDependency + dev/deploy scripts
   `#phone-render`: our hand-stacked phone rendition of the same page, her
   copy, images and colours verbatim, typeset from her measured type map
   (FreightTextCmp for nearly everything, Poppins for the small print,
-  Pinyon Script numerals) with her client wall as her 5 × 3 hairline grid
-  at her measured logo widths. Its hero IS her live phone hero: rebuilt
+  Pinyon Script numerals). Its client wall IS her phone wall (v1.26,
+  measured from her live phone site): "Client Experience" at her size,
+  then her 3 × 5 grid in her phone order on her design grid (unit
+  0.3125vw; the wall 277 × 452 units, 22 in), her 0.3-unit hairline rules
+  drawn between the cells only, and every logo sized and placed so its ink
+  lands within a pixel of hers. Its hero IS her live phone hero: rebuilt
   from the owner's iPhone screenshot of vibeworthy.co (16 Nov 2026) and
   positioned in screen-width units, so every element lands within a point
   of hers on any phone. The sections below the hero are still our
@@ -68,9 +72,9 @@ package.json       wrangler devDependency + dev/deploy scripts
   her phone screenshots (16 Nov 2026; face, weight and size inferred from
   each line's ink width and height against the real font metrics) and set
   in screen-width units — the About text breaks on the same words as hers.
-  Services, Founder and Client Experience are not yet matched to her phone
-  layout, nor are her section layouts (her 3-column wall, three separate
-  values boxes, the ticker's star separators). **Phone motion** (v1.24, the
+  Services and Founder are not yet matched to her phone layout, nor are
+  her other section layouts (three separate values boxes, the ticker's star
+  separators, her services order). **Phone motion** (v1.24, the
   owner's "bring back the sliding scroll bits … like the original"): her
   live phone site renders in headless Chromium at 402 × 874 (touch) once
   the environment allows vibeworthy.co, st-p.rmcdn1.net, c-p.rmcdn.net,
@@ -220,3 +224,4 @@ design are their own release, requested deliberately.
 | v1.23 | Her phone type, measured line by line | On phones, the headings, the About text, the process cards, the values and the contact lines now use her own sizes and weights, measured from her live site, so the About text even breaks on the same words as hers; the ticker and footer come down to her quieter size. |
 | v1.24 | Her phone page moves the way hers does | On phones, the page now moves as you scroll just as her own phone site does: the wordmark shrinks away, the Services panel sweeps in from the side, headings and lines rise into place, the four process cards glide across on her diagonal, and a shooting star crosses at the foot. Phones set to reduce motion keep the still page. |
 | v1.25 | Every process card holds its two lines | On phones, each process card's line now always sits on two lines, breaking exactly where hers does, so the Strategy & Planning card no longer pushes its last word out of the bottom on iPhones; the words and their size are unchanged. |
+| v1.26 | Her client wall, the way phones see it | On phones, Client Experience now matches her own phone site: her larger heading, then her fifteen logos in three columns and five rows in her order, divided by her fine hairlines, each logo sitting exactly where hers does, with the rows rising into place as you scroll. |

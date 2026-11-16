@@ -526,24 +526,35 @@
   .pr-founder .pr-intro{font-family:var(--vw-sans);font-size:13.5px;line-height:1.55;
     margin:0 0 22px;max-width:40ch}
   .pr-founder img.pr-photo{width:72%;max-width:300px;border-radius:10px;display:block;margin:0 0 30px}
-  .pr-founder h3{font-size:26px;margin:0 0 16px}
-  /* her wall: 5 x 3 in her order, each logo at the width she gave it
-     (measured against her 125.6 x 121.5 cell), her hairline grid */
-  .pr-wall{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
-  .pr-wall .pw-c{display:flex;align-items:center;justify-content:center;
-    aspect-ratio:1.034;border-right:1px solid rgba(26,61,164,.4);
-    border-bottom:1px solid rgba(26,61,164,.4)}
-  .pr-wall .pw-c:nth-child(5n){border-right-color:transparent}
-  .pr-wall .pw-c:nth-child(n+11){border-bottom-color:transparent}
-  .pr-wall img{display:block;flex:none;height:auto}
-  .pw-c:nth-child(1) img{width:81.2%}   .pw-c:nth-child(2) img{width:82.3%}
-  .pw-c:nth-child(3) img{width:74.8%}   .pw-c:nth-child(4) img{width:51.3%}
-  .pw-c:nth-child(5) img{width:55.6%}   .pw-c:nth-child(6) img{width:97.3%}
-  .pw-c:nth-child(7) img{width:80.2%}   .pw-c:nth-child(8) img{width:50.2%}
-  .pw-c:nth-child(9) img{width:55.6%}   .pw-c:nth-child(10) img{width:51.3%}
-  .pw-c:nth-child(11) img{width:77%}    .pw-c:nth-child(12) img{width:104.8%}
-  .pw-c:nth-child(13) img{width:77%}    .pw-c:nth-child(14) img{width:69.5%}
-  .pw-c:nth-child(15) img{width:77%}
+  /* Client Experience, as on her phone layout (measured from her live phone
+     site, 16 Nov 2026): her heading size, then her 3 x 5 wall in her phone
+     order, her 0.3-unit hairline rules between the cells only (no outer
+     frame), each logo sized and placed so its ink lands on hers. Her grid
+     unit is 0.3125vw: the wall is 277 x 452 units, 22 units in. */
+  .pr-founder h3{font-size:7.8125vw;line-height:14.375vw;
+    margin:0 0 2.8125vw calc(6.5625vw - 24px)}
+  #phone-render .pr-founder{padding-bottom:0}
+  #phone-render .pr-process{padding-top:11.59vw}
+  .pr-wall{position:relative;width:86.5625vw;height:141.25vw;
+    margin-left:calc(6.875vw - 24px)}
+  .pr-wall .pw-rules{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+  .pr-wall .pw-rules path{fill:none;stroke:#1a3da4;stroke-width:.3}
+  .pr-wall img{position:absolute;display:block;height:auto;max-width:none}
+  .pr-wall img:nth-of-type(1){left:2.495vw;top:11.192vw;width:20.316vw}  /* Roc Nation */
+  .pr-wall img:nth-of-type(2){left:30.604vw;top:11.192vw;width:24.129vw}  /* YouTube Originals */
+  .pr-wall img:nth-of-type(3){left:60.38vw;top:10.66vw;width:21.743vw}  /* Smirnoff */
+  .pr-wall img:nth-of-type(4){left:-2.52vw;top:39.383vw;width:28.448vw}  /* Unilever */
+  .pr-wall img:nth-of-type(5){left:30.604vw;top:38.139vw;width:23.465vw}  /* Amazon Music */
+  .pr-wall img:nth-of-type(6){left:63.771vw;top:33.746vw;width:14.677vw}  /* Havana Club */
+  .pr-wall img:nth-of-type(7){left:0.318vw;top:65.081vw;width:22.457vw}  /* Sony */
+  .pr-wall img:nth-of-type(8){left:26.9vw;top:61.622vw;width:30.546vw}  /* Warner Music */
+  .pr-wall img:nth-of-type(9){left:59.997vw;top:65.047vw;width:22.555vw}  /* Universal Music Group */
+  .pr-wall img:nth-of-type(10){left:4.652vw;top:95.271vw;width:14.68vw}  /* British Fashion Council */
+  .pr-wall img:nth-of-type(11){left:34.068vw;top:91.578vw;width:16.208vw}  /* KOKO */
+  .pr-wall img:nth-of-type(12){left:63.16vw;top:94.759vw;width:16.232vw}  /* The North Face */
+  .pr-wall img:nth-of-type(13){left:4.386vw;top:122.575vw;width:14.942vw}  /* Puma */
+  .pr-wall img:nth-of-type(14){left:32.511vw;top:123.131vw;width:20.32vw}  /* Hook */
+  .pr-wall img:nth-of-type(15){left:60.244vw;top:122.528vw;width:22.562vw}  /* Sky */
   .pr-card{border-radius:22px;padding:18px 20px 22px;margin:0 0 16px}
   .pr-card.pr-blue{background:#1a3da4;color:#fbfae9}
   .pr-card.pr-cream{background:#fbfae9;color:#1a3da4}
@@ -671,21 +682,22 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
     <img class="pr-photo" src="/assets/rm/image-0d383bf6-a65a-47fb-906a-e7e5d5687c82.webp" alt="Kalpna">
     <h3>Client Experience</h3>
     <div class="pr-wall">
-      <span class="pw-c"><img src="/assets/rm/image-5b0523d0-2ee2-46fe-ac12-428b84a80895.webp" alt="Roc Nation"></span>
-      <span class="pw-c"><img src="/assets/rm/image-c0147c02-f767-45ec-bb4b-c78642e10903.webp" alt="YouTube Originals"></span>
-      <span class="pw-c"><img src="/assets/rm/image-7a859215-6756-4b13-8788-cc4919ed01a1.webp" alt="Smirnoff"></span>
-      <span class="pw-c"><img src="/assets/rm/image-7ff995ce-e46a-4431-80ca-de532cc41c2a.webp" alt="British Fashion Council"></span>
-      <span class="pw-c"><img src="/assets/rm/image-71ef0e53-b599-4b90-a0b7-3823995097cc.webp" alt="KOKO"></span>
-      <span class="pw-c"><img src="/assets/rm/image-ec4dd42e-d9ac-4f60-bfb0-e7fd2e3c58f2.webp" alt="Unilever"></span>
-      <span class="pw-c"><img src="/assets/rm/image-96c34867-3d03-4c8e-b791-a6b1b0ce8b91.webp" alt="Amazon Music"></span>
-      <span class="pw-c"><img src="/assets/rm/image-e44a6111-c80f-4e71-abe8-f87f2a2ef6c3.webp" alt="Havana Club"></span>
-      <span class="pw-c"><img src="/assets/rm/image-2abe1198-83aa-44ff-ba53-fae6cf38a639.webp" alt="The North Face"></span>
-      <span class="pw-c"><img src="/assets/rm/image-315d08b2-0043-4746-aca2-6ad1c87fe699.webp" alt="Puma"></span>
-      <span class="pw-c"><img src="/assets/rm/image-517f06d3-9751-4b1d-99fe-d21975238fc3.webp" alt="Sony"></span>
-      <span class="pw-c"><img src="/assets/rm/image-0b8e6162-3e71-4e48-af9c-778ae86476f3.webp" alt="Warner Music"></span>
-      <span class="pw-c"><img src="/assets/rm/image-1a731d7e-3af3-43a5-a62e-dfd814d32fb2.webp" alt="Universal Music Group"></span>
-      <span class="pw-c"><img src="/assets/rm/image-aa8d01b3-bb29-4e67-84d5-c688be605514.webp" alt="Hook"></span>
-      <span class="pw-c"><img src="/assets/rm/image-b34a30e8-042e-457c-8446-8ca0b20dec97.webp" alt="Sky"></span>
+      <svg class="pw-rules" viewBox="0 0 277 452" aria-hidden="true" focusable="false"><path d="M91 0V451M183 1V452M0 90H277M0 180H277M0 270H277M0 360H277"/></svg>
+      <img src="/assets/rm/image-5b0523d0-2ee2-46fe-ac12-428b84a80895.webp" alt="Roc Nation">
+      <img src="/assets/rm/image-c0147c02-f767-45ec-bb4b-c78642e10903.webp" alt="YouTube Originals">
+      <img src="/assets/rm/image-7a859215-6756-4b13-8788-cc4919ed01a1.webp" alt="Smirnoff">
+      <img src="/assets/rm/image-ec4dd42e-d9ac-4f60-bfb0-e7fd2e3c58f2.webp" alt="Unilever">
+      <img src="/assets/rm/image-96c34867-3d03-4c8e-b791-a6b1b0ce8b91.webp" alt="Amazon Music">
+      <img src="/assets/rm/image-e44a6111-c80f-4e71-abe8-f87f2a2ef6c3.webp" alt="Havana Club">
+      <img src="/assets/rm/image-517f06d3-9751-4b1d-99fe-d21975238fc3.webp" alt="Sony">
+      <img src="/assets/rm/image-0b8e6162-3e71-4e48-af9c-778ae86476f3.webp" alt="Warner Music">
+      <img src="/assets/rm/image-1a731d7e-3af3-43a5-a62e-dfd814d32fb2.webp" alt="Universal Music Group">
+      <img src="/assets/rm/image-7ff995ce-e46a-4431-80ca-de532cc41c2a.webp" alt="British Fashion Council">
+      <img src="/assets/rm/image-71ef0e53-b599-4b90-a0b7-3823995097cc.webp" alt="KOKO">
+      <img src="/assets/rm/image-2abe1198-83aa-44ff-ba53-fae6cf38a639.webp" alt="The North Face">
+      <img src="/assets/rm/image-315d08b2-0043-4746-aca2-6ad1c87fe699.webp" alt="Puma">
+      <img src="/assets/rm/image-aa8d01b3-bb29-4e67-84d5-c688be605514.webp" alt="Hook">
+      <img src="/assets/rm/image-b34a30e8-042e-457c-8446-8ca0b20dec97.webp" alt="Sky">
     </div>
   </section>
   <section class="pr-process">
@@ -1104,7 +1116,7 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
     rise(all(".pr-founder .pr-photo"),5.95,10.7,false,inC);
     rise(all(".pr-founder h3"),4.38,5.47,false);
     var logos=all(".pr-wall img");
-    for(var r=0;r<logos.length;r+=5) rise(logos.slice(r,r+5),10,32.8,true);
+    for(var r=0;r<logos.length;r+=3) rise(logos.slice(r,r+3),10,32.8,true);
     rise(all(".pr-process h2"),10,97,true);
     track(all(".pr-strip"),0,0,-932.5,0,619.4,false);
     var box=pr.querySelector(".pr-values-box");
