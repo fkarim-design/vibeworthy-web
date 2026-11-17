@@ -461,16 +461,16 @@
   /* Shown on touch phones only: a narrow desktop window keeps her desktop
      composition, scaled, exactly as her own site does. Keep this query in
      step with PHONE_QUERY in static-canvas-js. */
-  #phone-render{display:none}
+  #phone-render,#phone-foot{display:none}
   @media (max-width:767px) and (pointer:coarse){
-    #phone-render{display:block}
+    #phone-render,#phone-foot{display:block}
     main.mag,body>.fixed-position-container{display:none !important}
     body{height:auto !important}
   }
   /* her type system, measured from her design: FreightTextCmp Pro (qhhw)
      for nearly everything, Poppins (thsk) for the small print, Pinyon
      Script for the process numerals */
-  #phone-render,#people{
+  #phone-render,#people,#phone-foot{
     --vw-serif:freighttextcmp-pro,qhhw,vw-serif,Georgia,serif;
     --vw-sans:poppins,thsk,vw-sans,system-ui,sans-serif}
   #phone-render{background:#eaebec;color:#1a3da4;font-family:var(--vw-serif);
@@ -572,7 +572,11 @@
   .pr-values-box p{font-family:var(--vw-sans);font-size:3.77vw;line-height:1.18}
   .pr-contact .pr-line{font-style:italic;font-weight:500;font-size:5.33vw;margin:0 0 10px}
   .pr-contact a{font-family:var(--vw-sans);font-size:4.15vw}
-  .pr-foot{background:#1a3da4;color:#fbfae9;padding:30px 24px 40px}
+  /* the sign-off: last on the phone page, below the people (owner request,
+     16 Nov 2026); it sits on the people section's blue, so no top padding */
+  .pr-foot{background:#1a3da4;color:#fbfae9;padding:0 24px 40px;
+    font-family:var(--vw-serif)}
+  .pr-foot p{margin:0}
   .pr-foot img{width:120px;height:auto;display:block;margin:0 0 14px}
   .pr-foot p{font-style:italic;font-weight:500;font-size:3.08vw}
   .pr-foot a{color:#fbfae9}
@@ -628,10 +632,10 @@
   .vw-standin.pr-motion .pr-strip .pr-card p{font-size:5.5vw;line-height:6.6vw;
     white-space:normal}
   /* the shooting star that crosses above the closing ticker */
-  .pr-motion #phone-render .pr-contact{padding-bottom:26.6vw}
+  .pr-motion #phone-render .pr-contact{padding-bottom:11vw}
   .pr-motion .pr-contact a{display:inline-block}
   .pr-motion .pr-shoot{display:block;position:relative;height:0}
-  .pr-shoot i{position:absolute;left:0;width:100vw;top:-15.4vw;height:11vw;overflow:hidden}
+  .pr-shoot i{position:absolute;left:0;width:100vw;top:-11vw;height:11vw;overflow:hidden}
   .pr-shoot img{position:absolute;left:96.57vw;top:0;width:19.38vw;height:auto}
 </style>
 <script id="phone-motion-flag">
@@ -737,10 +741,6 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
   </section>
   <div class="pr-shoot" aria-hidden="true"><i><img src="/assets/rm/image-3306f450-5b9e-4014-9db3-2c9ae4f88a60.webp" alt=""></i></div>
   <div class="pr-band"><span class="pr-track">You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; You’re already Vibe Worthy. We’ll help the world see it.&nbsp; </span></div>
-  <div class="pr-foot">
-    <img src="/assets/rm/image-0cd8235a-e096-4766-9aa3-aa8284bee964.webp" alt="Vibe Worthy">
-    <p>Vibe Worthy&nbsp;|&nbsp;London &nbsp;&nbsp; <a href="mailto:kalpna@vibeworthy.co">kalpna@vibeworthy.co</a></p>
-  </div>
 </div>
 
 <!-- the people — pitch addition (owner request, 25 Aug 2026): her creatives
@@ -783,6 +783,9 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
   @media (max-width:900px){#people .pgrid{grid-template-columns:1fr 1fr}}
   @media (max-width:600px){#people .pgrid{grid-template-columns:1fr}
     #people h2{font-size:32px}}
+  /* touch phones (the phone-render-css predicate): the phone rendition's
+     44px section rhythm, the sign-off following straight on */
+  @media (max-width:767px) and (pointer:coarse){#people{padding-top:44px;padding-bottom:44px}}
 </style>
 <div id="canvas-space" aria-hidden="true"></div>
 <section id="people">
@@ -816,6 +819,12 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
       <a href="mailto:kalpna@vibeworthy.co">kalpna@vibeworthy.co</a></p>
   </div>
 </section>
+<!-- her sign-off, last on the phone page (owner request, 16 Nov 2026):
+     phones only, shown and hidden with #phone-render -->
+<div id="phone-foot" class="pr-foot">
+  <img src="/assets/rm/image-0cd8235a-e096-4766-9aa3-aa8284bee964.webp" alt="Vibe Worthy">
+  <p>Vibe Worthy&nbsp;|&nbsp;London &nbsp;&nbsp; <a href="mailto:kalpna@vibeworthy.co">kalpna@vibeworthy.co</a></p>
+</div>
 <style id="fallback-faces">
   /* Last-resort stand-ins under their own names (vw-serif, vw-sans), at the
      end of every rewritten stack: used only when neither our Adobe Fonts
@@ -1101,10 +1110,12 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
        fading in from transparent if `fade` */
     function track(els,x0,y0,x1,y1,run,fade,ease){
       els=els.filter(Boolean);
-      if(els.length) tracks.push({els:els,x0:x0,y0:y0,x1:x1,y1:y1,run:run,
-        fade:fade,ease:ease||inQ,top:0,e:-1});
+      if(!els.length)return null;
+      var t={els:els,x0:x0,y0:y0,x1:x1,y1:y1,run:run,fade:fade,ease:ease||inQ,top:0,e:-1};
+      tracks.push(t);
+      return t;
     }
-    function rise(els,dy,run,fade,ease){track(els,0,dy,0,0,run,fade,ease);}
+    function rise(els,dy,run,fade,ease){return track(els,0,dy,0,0,run,fade,ease);}
 
     rise(all(".pr-about h2"),21.24,53,false);
     rise(all(".pr-about p"),21.24,42.5,false);
@@ -1133,8 +1144,11 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
       groups.forEach(function(g){rise(g,10,19.9,true);});
     }
     rise(all(".pr-contact h2"),10,97,true);
-    rise(all(".pr-contact .pr-line,.pr-contact a"),10,97,true);
-    track(all(".pr-shoot img"),0,0,-114.5,0,66.2,false);
+    var said=rise(all(".pr-contact .pr-line,.pr-contact a"),10,97,true);
+    var star=track(all(".pr-shoot img"),0,0,-114.5,0,66.2,false);
+    /* the gap under the contact lines is cut to the star's own lane (owner
+       request, 16 Nov 2026), so it flies once those lines have settled */
+    if(star&&said)star.after=said;
     var wel=pr.querySelector(".pr-welcome"),logo=pr.querySelector(".pr-logo");
 
     var on=false,ticking=false;
@@ -1173,7 +1187,9 @@ if(window.matchMedia&&matchMedia("(max-width:767px) and (pointer:coarse)").match
       var y=Math.max(0,window.pageYOffset),U=root.clientWidth/100,VH=root.clientHeight;
       for(var i=0;i<tracks.length;i++){
         var t=tracks[i];
-        var p=(y-(t.top+t.y0*U-VH))/(t.run*U);
+        var s0=t.top+t.y0*U-VH;
+        if(t.after)s0=Math.max(s0,t.after.top+t.after.y0*U-VH+t.after.run*U);
+        var p=(y-s0)/(t.run*U);
         p=p<0?0:p>1?1:p;
         var e=t.ease(p);
         if(e===t.e)continue;

@@ -53,8 +53,9 @@ package.json       wrangler devDependency + dev/deploy scripts
   A desktop window of any width keeps her canvas, scaled, exactly as her
   own site does (the owner's side-by-side comparison, 15 Nov 2026). Only
   touch phones — `(max-width:767px) and (pointer:coarse)`, one predicate
-  shared by `phone-render-css`, `PHONE` in `static-canvas-js` and
-  `phone-motion-flag`/`phone-motion-js` — get
+  shared by `phone-render-css`, `PHONE` in `static-canvas-js`,
+  `phone-motion-flag`/`phone-motion-js` and the phone rule in `people-css`
+  — get
   `#phone-render`: our hand-stacked phone rendition of the same page, her
   copy, images and colours verbatim, typeset from her measured type map
   (FreightTextCmp for nearly everything, Poppins for the small print,
@@ -93,7 +94,9 @@ package.json       wrangler devDependency + dev/deploy scripts
   where hers does and never re-wraps: her first lines fill their boxes to
   within 1–2px, and iPhone's slightly wider text measure pushed card 2's
   last word out of the card, v1.25); a shooting star crosses
-  above the closing ticker. `phone-motion-flag` sets `html.pr-motion`
+  above the closing ticker — since v1.27 in a lane cut to 11vw under the
+  contact lines (the owner's "cut these gaps"), flying only once those
+  lines have settled so it never crosses them. `phone-motion-flag` sets `html.pr-motion`
   before the rendition parses; without it — reduced motion, no script, an
   error — the still, stacked rendition stands. The direct call to her
   widget API was refused as unauthorised access: measure the rendered page,
@@ -101,7 +104,10 @@ package.json       wrangler devDependency + dev/deploy scripts
   the phone rendition alike — sits `#people`, our pitch-added roster of her
   three creatives (owner request, 25 Aug 2026) linking to their
   `/creatives/<name>/` booking pages; `/creatives/` itself forwards to
-  `/#people`. **Fonts:** her kit faces are FreightTextCmp Pro = `qhhw`,
+  `/#people`. On phones the sign-off — her wordmark with "Vibe Worthy |
+  London" and the email under it — is `#phone-foot`, the last thing on the
+  page, below `#people` (owner request, 16 Nov 2026), and `#people` takes
+  the phone rendition's 44px rhythm; desktop keeps her canvas footer. **Fonts:** her kit faces are FreightTextCmp Pro = `qhhw`,
   Poppins = `thsk`, Sweet Sans Pro = `tgzb`, Neue Haas Grotesk Text =
   `wtqc` (confirmed: our kit serves the very same Adobe font files her page
   links). Our Adobe Fonts web project, kit `dhe6bjp` (licensed for
@@ -225,3 +231,4 @@ design are their own release, requested deliberately.
 | v1.24 | Her phone page moves the way hers does | On phones, the page now moves as you scroll just as her own phone site does: the wordmark shrinks away, the Services panel sweeps in from the side, headings and lines rise into place, the four process cards glide across on her diagonal, and a shooting star crosses at the foot. Phones set to reduce motion keep the still page. |
 | v1.25 | Every process card holds its two lines | On phones, each process card's line now always sits on two lines, breaking exactly where hers does, so the Strategy & Planning card no longer pushes its last word out of the bottom on iPhones; the words and their size are unchanged. |
 | v1.26 | Her client wall, the way phones see it | On phones, Client Experience now matches her own phone site: her larger heading, then her fifteen logos in three columns and five rows in her order, divided by her fine hairlines, each logo sitting exactly where hers does, with the rows rising into place as you scroll. |
+| v1.27 | A tighter close, signed off at the foot | On phones, the end of the page is tighter: the empty space under the contact email and the gap above the creatives are gone, the shooting star now crosses the trimmed space once the contact lines have settled, and the Vibe Worthy sign-off with her London and email line now closes the page beneath the creatives. |
